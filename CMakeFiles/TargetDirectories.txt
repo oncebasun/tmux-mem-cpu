@@ -1,0 +1,7 @@
+/home/oncebasun/projects/tmux-mem-cpu/CMakeFiles/install/strip.dir
+/home/oncebasun/projects/tmux-mem-cpu/CMakeFiles/edit_cache.dir
+/home/oncebasun/projects/tmux-mem-cpu/CMakeFiles/tmux-mem-cpu.dir
+/home/oncebasun/projects/tmux-mem-cpu/CMakeFiles/rebuild_cache.dir
+/home/oncebasun/projects/tmux-mem-cpu/CMakeFiles/list_install_components.dir
+/home/oncebasun/projects/tmux-mem-cpu/CMakeFiles/install/local.dir
+/home/oncebasun/projects/tmux-mem-cpu/CMakeFiles/install.dir

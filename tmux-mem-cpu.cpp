@@ -162,11 +162,11 @@ std::string tick( int percentage )
   std::ostringstream oss;
 
   if (percentage > 75) {
-    oss << "#[fg=red]";
+    oss << "#[default]#[fg=red]";
   } else if (percentage > 50) {
-    oss << "#[fg=yellow]";
+    oss << "#[default]#[fg=yellow]";
   } else {
-    oss << "#[fg=green]";
+    oss << "#[default]#[fg=green]";
   }
   oss << ticks.substr(tick_pos * 3, 3);
   return oss.str();
@@ -249,16 +249,18 @@ std::string mem_string()
 
   used_mem = total_mem;
 
-  for( unsigned int i = 0; i < 3; i++ )
-    {
+  while(true) {
     getline( meminfo_file, mem_line );
-    line_start_pos = mem_line.find_first_of( ':' );
-    line_start_pos++;
-    line_end_pos = mem_line.find_first_of( 'k' );
-    iss.str( mem_line.substr( line_start_pos, line_end_pos - line_start_pos ) );
-    iss >> unused_mem;
-    used_mem -= unused_mem;
+    if (mem_line.find_first_of( "MemFree" ) != std::string::npos) {
+      line_start_pos = mem_line.find_first_of( ':' );
+      line_start_pos++;
+      line_end_pos = mem_line.find_first_of( 'k' );
+      iss.str( mem_line.substr( line_start_pos, line_end_pos - line_start_pos ) );
+      iss >> unused_mem;
+      used_mem -= unused_mem;
+      break;
     }
+  }
   meminfo_file.close();
 #endif // platform
 
@@ -297,8 +299,8 @@ int main(int argc, char** argv)
     return 1;
   }
 
-  std::cout << mem_string() << "#[" << color << "] ";
-  std::cout << cpu_string( cpu_usage_delay ) << "#[" << color << "] ";
+  std::cout << "#[" << color << "] " << mem_string();
+  std::cout << "#[" << color << "] " << cpu_string( cpu_usage_delay );
 
   return 0;
 }

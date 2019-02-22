@@ -1,0 +1,1 @@
+/usr/bin/c++  -Os -DNDEBUG  -rdynamic CMakeFiles/tmux-mem-cpu.dir/tmux-mem-cpu.cpp.o  -o tmux-mem-cpu 
